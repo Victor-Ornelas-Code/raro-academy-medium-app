@@ -6,6 +6,7 @@ import './ArticleView.css'
 
 import { ArticleViewProps } from "./ArticleView.type";
 import { formataData } from "../../helpers/date";
+import { Button } from "../Button";
 
 
 export const ArticleView: React.FC<ArticleViewProps> = ({

@@ -1,3 +1,4 @@
+import { getValue } from "@testing-library/user-event/dist/utils";
 import React, { HTMLInputTypeAttribute } from "react";
 
 export type InputProps = {
@@ -6,6 +7,9 @@ export type InputProps = {
   placeholder?: string;
   type: HTMLInputTypeAttribute | 'textarea';
   required?: boolean;
+  value?: string;
+  result?:string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -13,7 +17,9 @@ export const Input: React.FC<InputProps> = ({
   label,
   placeholder = '',
   type,
-  required = false
+  required = false,
+  value,
+  onChange,
 }) => {
   const inputClassNames = `
     rounded-lg border border-gray-300 px-4 py-2 w-full
@@ -38,6 +44,8 @@ export const Input: React.FC<InputProps> = ({
               placeholder={ placeholder }
               required={ required }
               className={ inputClassNames }
+              value={ value }
+              onChange={ onChange }
             /> 
           ) :
           (
@@ -48,6 +56,8 @@ export const Input: React.FC<InputProps> = ({
               placeholder={ placeholder }
               className={ `${inputClassNames} resize-none` }
               required={ required }
+              value = {value}
+              onChange = {onChange}
             />
           )
       }
