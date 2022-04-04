@@ -23,34 +23,36 @@ export const EditarArquivoPage = () => {
         const response = await axiosApiInstance.get<ArticleThumbnailProps>(
             `/artigos/${id}`
         );
-      
+
         setArtigo(response.data);
     }
 
     const handleSubmit = async (artigo: ArticleThumbnailProps) => {
 
-        
+
         if (artigo.id) {
-             await axiosApiInstance.patch<ArticleThumbnailProps>(
-                `/artigos/${id}`, {...artigo});
-            
+            await axiosApiInstance.patch<ArticleThumbnailProps>(
+                `/artigos/${id}`, { ...artigo });
+            navigate(`/artigos`)
+
         } else {
-            await axiosApiInstance.post<ArticleThumbnailProps>(`/artigos`, {...artigo})
-            
+            const response = await axiosApiInstance.post<ArticleThumbnailProps>(`/artigos`, { ...artigo })
+            navigate(`/artigo/${response.data.id}`)
         }
-        navigate('/artigos')
+
+
 
     }
 
     const handleDelete = async (article: ArticleThumbnailProps) => {
 
         if (article.id) {
-        const response = await axiosApiInstance.delete<ArticleThumbnailProps>(
-          `/artigos/${id}`);
+            const response = await axiosApiInstance.delete<ArticleThumbnailProps>(
+                `/artigos/${id}`);
         }
-    
+
         navigate('/artigos')
-      }
+    }
 
     return (
         <>
