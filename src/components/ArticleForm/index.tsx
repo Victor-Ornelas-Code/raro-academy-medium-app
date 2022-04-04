@@ -49,7 +49,7 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
 
   const handleDelete = () => { onDelete!(article!) }
 
-
+  
   const transformaImagemEmBase64 = (event: any) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -73,7 +73,7 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
             type="text"
             name="titulo"
             label="Titulo"
-            value={article && article.titulo}
+            value={titulo}
             onChange={(event) => { setTitulo(event.target.value) }}
             required
           />
@@ -105,8 +105,8 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
 
           <div className="flex flex-wrap -mx-3 mb-6">
             <Button type="submit">Salvar</Button>
-            <Button buttonAction="back" action={() => navigate('/artigos')}>Voltar</Button>
-            <Button buttonAction='delete' action={() => handleDelete()}>Deletar</Button>
+            <Button type="button" buttonAction="back" action={() => navigate('/artigos')}>Voltar</Button>
+            <Button type="button" buttonAction='delete' action={() => handleDelete()}>Deletar</Button>
           </div>
         </form>
 
