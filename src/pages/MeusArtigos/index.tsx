@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import { ArticleList } from "../../components/ArticleList";
 import { ArticleThumbnailProps } from "../../components/ArticleThumbnail/ArticleThumbnail.types";
+import NoArticles from "../../components/NoArticle";
 
 
 export const MeusArtigosPage = () => {
@@ -10,7 +11,7 @@ export const MeusArtigosPage = () => {
 
   async function buscaMeusArtigos() {
     const response = await axiosApiInstance.get<ArticleThumbnailProps[]>(
-      '/artigos/meus-artigos'      
+      '/artigos/meus-artigos'
     );
     setArticles(response.data);
   }
@@ -21,7 +22,7 @@ export const MeusArtigosPage = () => {
 
   return (
     <div className="my-30">
-      <ArticleList articles={articles} />
+      {articles.length === 0 ? <NoArticles /> : <ArticleList articles={articles} />}
     </div>
   );
 };
