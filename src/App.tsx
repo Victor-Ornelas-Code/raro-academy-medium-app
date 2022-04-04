@@ -10,7 +10,7 @@ import { ArtigoPage } from './pages/Artigo';
 import { MeusArtigosPage } from './pages/MeusArtigos';
 import { EditarArquivoPage } from './pages/EditarArtigo';
 import { Header } from './components/Header';
-import { RequireAuth } from './RequireAuth';
+import { RequireAuth } from './components/RequireAuth';
 import { Layout } from './components/Layout';
 
 function App() {
